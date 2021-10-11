@@ -5,10 +5,10 @@
 from time import sleep  # rendering delay for watchability
 import sys              # command line arguments
 
-# how many pieces there are
+# get constants from command line
 try:
-	SIZE  =   int(sys.argv[1]) if len(sys.argv) > 1 else 5
-	DELAY = float(sys.argv[2]) if len(sys.argv) > 2 else 1
+	SIZE  =   int(sys.argv[1]) if len(sys.argv) > 1 else 5  # number of pieces
+	DELAY = float(sys.argv[2]) if len(sys.argv) > 2 else 1  # animation speed
 
 except ValueError:
 	print (
@@ -25,8 +25,6 @@ except ValueError:
 
 # initialize towers
 towers = ([i for i in range (SIZE, 0, -1)], [], [])
-
-max_depth = 0
 
 # move a tower of height `depth` from `origin` via `via` to destination `dest`
 def move_tower (depth, origin, via, dest):
@@ -48,6 +46,8 @@ def move_tower (depth, origin, via, dest):
 	# move the rest of the pieces to destination
 	move_tower (depth - 1, via, origin, dest)
 
+# end move_tower
+
 # display the current state of the puzzle
 def render():
 	spaces = 3  # spacing between towers
@@ -55,9 +55,12 @@ def render():
 	print()
 	print()
 
-	# print towers
+	# for each layer
 	for i in range (SIZE, 0, -1):
+
+		# for each tower in the layer
 		for tower in towers:
+
 			# get piece number or background
 			piece = str(tower[i - 1]) if len(tower) >= i else "|"
 
@@ -69,9 +72,11 @@ def render():
 				# padding to account for differing number lengths
 				" " * (len(str(SIZE)) - len(piece)),
 
+				# don't put \n between towers
 				end=""
 			)
 
+		# put \n between layers
 		print()
 
 	# print base. it's complicated, okay?
@@ -86,11 +91,11 @@ def render():
 
 	))  # end base
 	
-	print()
-
+	# buffer between frames
+	print ()
 	sleep (DELAY)
 
-# end def render
+# end render
 
 # solve the puzzle
 def main():
