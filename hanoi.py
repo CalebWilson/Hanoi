@@ -5,7 +5,7 @@
 from time import sleep  # rendering delay for watchability
 import sys              # command line arguments
 
-# get constants from command line
+# get parameters from command line
 try:
 	DELAY = 1                                               # animation speed
 	SIZE  = int(sys.argv[1]) if len(sys.argv) > 1 else 5    # number of pieces
@@ -29,7 +29,7 @@ except ValueError:
 # initialize towers
 towers = ([i for i in range (SIZE, 0, -1)], [], [])
 
-# move a tower of height `depth` from `origin` via `via` to destination `dest`
+""" move tower of height `depth` from `origin` via `via` to destination `dest` """
 def move_tower (depth, origin, via, dest):
 
 	# if no more pieces, stop
@@ -51,7 +51,7 @@ def move_tower (depth, origin, via, dest):
 
 # end move_tower
 
-# display the current state of the puzzle
+""" display the current state of the puzzle """
 def render():
 	spaces = 3  # spacing between towers
 
@@ -103,7 +103,7 @@ def render():
 
 # end render
 
-# solve the puzzle
+""" solve the puzzle """
 def main():
 	render()
 	move_tower (SIZE, towers[0], towers[1], towers[2])
