@@ -81,11 +81,11 @@ def render():
 
 	# print base. it's complicated, okay?
 	print ("-" * (
-		spaces + (              # leading spaces
-			len(towers) * (      # for each tower
-				len(str(SIZE)) +  # piece length
-				spaces +          # space between towers
-				(len(towers) - 1) # concatenation spaces from print()
+		spaces + (					# leading spaces
+			len(towers) * (		# for each tower
+				len(str(SIZE)) +	# piece length
+				spaces +				# space between towers
+				(len(towers) - 1)	# concatenation spaces from print()
 			)
 		)
 
