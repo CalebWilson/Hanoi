@@ -19,7 +19,8 @@ except ValueError:
 		"ERROR:",
 		"",
 		"First parameter must be an integer number of pieces; second parameter",
-		"must be a decimal number of seconds between each animation frame.",
+		"must be a decimal number of seconds between each animation frame, or the",
+		"word \"manual\" to wait for a carriage return between frames.",
 		sep = "\n"
 	)
 	print()

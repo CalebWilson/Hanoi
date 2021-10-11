@@ -18,3 +18,7 @@ RUNNING THE PROGRAM:
 
 	To run the program with custom number of pieces and custom animation speed, do:
 		- python3 hanoi.py [number of pieces] [number of seconds between frames]
+
+	You can also replace the number of seconds between frames with the word
+	"manual" to make the program wait for a carriage return from the user between
+	each frame.
