@@ -7,8 +7,11 @@ import sys              # command line arguments
 
 # get constants from command line
 try:
-	SIZE  =   int(sys.argv[1]) if len(sys.argv) > 1 else 5  # number of pieces
-	DELAY = float(sys.argv[2]) if len(sys.argv) > 2 else 1  # animation speed
+	DELAY = 1                                               # animation speed
+	SIZE  = int(sys.argv[1]) if len(sys.argv) > 1 else 5    # number of pieces
+
+	if len(sys.argv) > 2:
+		DELAY = None if sys.argv[2] == "manual" else float(sys.argv[2])
 
 except ValueError:
 	print (
@@ -90,10 +93,13 @@ def render():
 		)
 
 	))  # end base
-	
+
 	# buffer between frames
 	print ()
-	sleep (DELAY)
+	if DELAY is None:
+		input()
+	else:
+		sleep (DELAY)
 
 # end render
 
